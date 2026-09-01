@@ -1,0 +1,343 @@
+/* ==========================================================================
+   Sistema de Encuestas — Hoja de estilos corporativa
+   Paleta: #172841 (azul corporativo) · #D07C32 (naranja de acento)
+   ========================================================================== */
+
+:root {
+  /* Marca */
+  --color-primary: #172841;
+  --color-primary-700: #0f1c30;
+  --color-primary-500: #24395c;
+  --color-primary-100: #e7eaf0;
+
+  --color-accent: #D07C32;
+  --color-accent-600: #b8692a;
+  --color-accent-100: #f7e6d5;
+
+  /* Neutros derivados del azul corporativo (misma familia tonal) */
+  --color-bg: #f2f3f6;
+  --color-surface: #ffffff;
+  --color-border: #d9dce4;
+  --color-text: #1c2432;
+  --color-text-muted: #5a6272;
+
+  /* Estados */
+  --color-success-bg: #eaf5ee;
+  --color-success-border: #2f9e57;
+  --color-success-text: #1e5c34;
+  --color-error-bg: #fbeae7;
+  --color-error-border: #c0432a;
+  --color-error-text: #82301c;
+
+  /* Tipografía */
+  --font-heading: Cambria, Georgia, "Times New Roman", serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Utilidades */
+  --radius: 6px;
+  --shadow-card: 0 1px 2px rgba(23, 40, 65, 0.06), 0 10px 28px rgba(23, 40, 65, 0.08);
+  --transition-fast: 140ms ease;
+}
+
+/* ------------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------------ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 3rem 1.5rem 4rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Título principal: es su propia tarjeta navy, del mismo ancho que el resto.
+   No depende de calcular alturas de franjas de fondo, así que no se descuadra
+   aunque el texto ocupe una o dos líneas. */
+h1 {
+  max-width: 480px;
+  margin: 0 auto 1.75rem;
+  padding: 1.15rem 1.5rem;
+  background: var(--color-primary);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 1.45rem;
+  letter-spacing: 0.01em;
+  border-radius: var(--radius);
+  border-bottom: 3px solid var(--color-accent);
+  box-shadow: var(--shadow-card);
+}
+
+/* ------------------------------------------------------------------------
+   Formularios como tarjetas
+   ------------------------------------------------------------------------ */
+
+form {
+  max-width: 480px;
+  margin: 0 auto 1.5rem;
+  padding: 2rem 2.25rem 2.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+}
+
+form h2 {
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--color-border);
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: var(--color-primary);
+}
+
+/* ------------------------------------------------------------------------
+   Campos de texto (archivo, empresa, expediente, acción, grupo, fecha)
+   ------------------------------------------------------------------------ */
+
+/* Solo ocultamos el <br> que va justo después de un campo de texto:
+   el espaciado entre filas lo controla el margin del label siguiente. */
+form input[type="text"] + br {
+  display: none;
+}
+
+form label:has(+ input[type="text"]) {
+  display: block;
+  margin: 1.1rem 0 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 0.01em;
+}
+
+form label:has(+ input[type="text"]):first-of-type {
+  margin-top: 0;
+}
+
+form input[type="text"] {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: 4px;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+form input[type="text"]:hover {
+  border-color: var(--color-primary-500);
+}
+
+form input[type="text"]:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-100);
+}
+
+form input[type="text"]::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Input de fichero oculto que recibe el CSV arrastrado */
+form input[type="file"].archivo-subido {
+  display: none;
+}
+
+/* Resalta el campo Archivo mientras se arrastra un fichero encima */
+form input[type="text"].drop-over {
+  border-color: var(--color-accent);
+  background: var(--color-accent-100);
+  box-shadow: 0 0 0 3px var(--color-accent-100);
+}
+
+/* ------------------------------------------------------------------------
+   Radios (selector de tipo de encuesta)
+   El <br> entre cada opción NO se oculta: es lo que separa una fila de otra.
+   Label e input siguen siendo elementos en línea, en el mismo orden del HTML
+   (texto primero, círculo después), para que queden en la misma línea.
+   ------------------------------------------------------------------------ */
+
+form label:has(+ input[type="radio"]) {
+  display: inline;
+  margin-right: 0.6rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+form input[type="radio"] {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin: 0 0 0.85rem 0;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+form label:has(+ input[type="radio"]:checked) {
+  color: var(--color-accent-600);
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------------------
+   Botón de envío
+   ------------------------------------------------------------------------ */
+
+form input[type="submit"] {
+  display: inline-block;
+  margin-top: 1.4rem;
+  padding: 0.7rem 1.75rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  background: var(--color-primary);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+form input[type="submit"]:hover {
+  background: var(--color-accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(208, 124, 50, 0.35);
+}
+
+form input[type="submit"]:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+form input[type="submit"]:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------------------
+   Alertas de éxito / error
+   Usa estas clases en vez de estilos inline para heredar la animación:
+   <div class="alert alert-error">...</div>
+   <div class="alert alert-success">...</div>
+   ------------------------------------------------------------------------ */
+
+.alert {
+  max-width: 480px;
+  margin: 0 auto 1.5rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 4px;
+  border-left: 4px solid transparent;
+  font-size: 0.9rem;
+  animation: alert-in 220ms ease;
+}
+
+.alert strong {
+  font-weight: 700;
+}
+
+.alert code {
+  display: inline-block;
+  margin-top: 0.35rem;
+  padding: 0.2rem 0.45rem;
+  background: rgba(23, 40, 65, 0.06);
+  border-radius: 3px;
+  font-size: 0.85rem;
+}
+
+.btn {
+  display: inline-block;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0.7rem 1.75rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  background: var(--color-primary);
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn:hover {
+  background: var(--color-accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(208, 124, 50, 0.35);
+}
+
+/* Centra el botón "Volver" bajo el aviso de éxito, igual que las tarjetas */
+.alert-success + .btn {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 1.5rem;
+}
+
+.alert-error {
+  background: var(--color-error-bg);
+  border-left-color: var(--color-error-border);
+  color: var(--color-error-text);
+}
+
+.alert-success {
+  background: var(--color-success-bg);
+  border-left-color: var(--color-success-border);
+  color: var(--color-success-text);
+}
+
+@keyframes alert-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ------------------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------------------ */
+
+@media (max-width: 540px) {
+  body {
+    padding: 2rem 1rem 3rem;
+  }
+
+  form,
+  h1 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  form {
+    padding-top: 1.5rem;
+    padding-bottom: 1.75rem;
+  }
+}
+
+/* ------------------------------------------------------------------------
+   Accesibilidad: respeta la preferencia de movimiento reducido
+   ------------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

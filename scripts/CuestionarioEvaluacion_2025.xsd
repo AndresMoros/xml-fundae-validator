@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType name="t_provincia">
+        <xs:restriction base="xs:string">
+            <xs:annotation>
+                <xs:documentation>99 = No contesta</xs:documentation>
+            </xs:annotation>
+            <xs:enumeration value="99" />
+            <xs:enumeration value="ARABA/ÁLAVA" />
+            <xs:enumeration value="ALBACETE" />
+            <xs:enumeration value="ALICANTE/ALACANT" />
+            <xs:enumeration value="ALMERÍA" />
+            <xs:enumeration value="ÁVILA" />
+            <xs:enumeration value="BADAJOZ" />
+            <xs:enumeration value="BALEARS, ILLES" />
+            <xs:enumeration value="BARCELONA" />
+            <xs:enumeration value="BURGOS" />
+            <xs:enumeration value="CÁCERES" />
+            <xs:enumeration value="CÁDIZ" />
+            <xs:enumeration value="CASTELLÓN/CASTELLÓ" />
+            <xs:enumeration value="CIUDAD REAL" />
+            <xs:enumeration value="CÓRDOBA" />
+            <xs:enumeration value="CORUÑA, A" />
+            <xs:enumeration value="CUENCA" />
+            <xs:enumeration value="GIRONA" />
+            <xs:enumeration value="GRANADA" />
+            <xs:enumeration value="GUADALAJARA" />
+            <xs:enumeration value="GIPUZKOA" />
+            <xs:enumeration value="HUELVA" />
+            <xs:enumeration value="HUESCA" />
+            <xs:enumeration value="JAÉN" />
+            <xs:enumeration value="LEÓN" />
+            <xs:enumeration value="LLEIDA" />
+            <xs:enumeration value="RIOJA, LA" />
+            <xs:enumeration value="LUGO" />
+            <xs:enumeration value="MADRID" />
+            <xs:enumeration value="MÁLAGA" />
+            <xs:enumeration value="MURCIA" />
+            <xs:enumeration value="NAVARRA" />
+            <xs:enumeration value="OURENSE" />
+            <xs:enumeration value="ASTURIAS" />
+            <xs:enumeration value="PALENCIA" />
+            <xs:enumeration value="PALMAS, LAS" />
+            <xs:enumeration value="PONTEVEDRA" />
+            <xs:enumeration value="SALAMANCA" />
+            <xs:enumeration value="SANTA CRUZ DE TENERIFE" />
+            <xs:enumeration value="CANTABRIA" />
+            <xs:enumeration value="SEGOVIA" />
+            <xs:enumeration value="SEVILLA" />
+            <xs:enumeration value="SORIA" />
+            <xs:enumeration value="TARRAGONA" />
+            <xs:enumeration value="TERUEL" />
+            <xs:enumeration value="TOLEDO" />
+            <xs:enumeration value="VALENCIA/VALÈNCIA" />
+            <xs:enumeration value="VALLADOLID" />
+            <xs:enumeration value="BIZKAIA" />
+            <xs:enumeration value="ZAMORA" />
+            <xs:enumeration value="ZARAGOZA" />
+            <xs:enumeration value="CEUTA" />
+            <xs:enumeration value="MELILLA" />
+            <xs:enumeration value="EXTRANJERO" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="t_seleccionIdiomas">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="(1|21|22|23|24|25|26|99){1}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="t_expediente">
+        <xs:restriction base="xs:string">
+            <xs:whiteSpace value="collapse" />
+            <xs:length value="9" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="t_short">
+        <xs:restriction base="xs:short">
+            <xs:minInclusive value="1" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="t_fecha">
+        <xs:restriction base="xs:string">
+            <xs:pattern
+                value="(((0[1-9]|[12][0-9]|3[01])([-./])(0[13578]|10|12)([-./])(\d{4}))|(([0][1-9]|[12][0-9]|30)([-./])(0[469]|11)([-./])(\d{4}))|((0[1-9]|1[0-9]|2[0-8])([-./])(02)([-./])(\d{4}))|((29)(\.|-|/)(02)([-./])([02468][048]00))|((29)([-./])(02)([-./])([13579][26]00))|((29)([-./])(02)([-./])([0-9][0-9][0][48]))|((29)([-./])(02)([-./])([0-9][0-9][2468][048]))|((29)([-./])(02)([-./])([0-9][0-9][13579][26])))" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="t_edad">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="3" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="t_genero">
+        <xs:restriction base="xs:int">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>Mujer</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>Varón</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="t_seleccion3">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([1-3]|99){1}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="t_sino">
+        <xs:restriction base="xs:int">
+            <xs:enumeration value="0">
+                <xs:annotation>
+                    <xs:documentation>No</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>Si</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="99">
+                <xs:annotation>
+                    <xs:documentation>No contesta</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="t_seleccion4">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([1-4]|99){1}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="t_seleccion5">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:pattern value="1{0,1}2{0,1}3{0,1}4{0,1}5{0,1}6{0,1}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="t_seleccion5_unica">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([1-5]|99){1}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="t_seleccion6_unica">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([1-6]|99){1}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="t_seleccion14">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([1-9]|11|111|12|21|41|42|61|71|72|73|99){1}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="t_texto">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="5000" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="cuestionarios">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cuestionario" type="t_cuestionario" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="t_bloqueI">
+        <xs:sequence>
+            <xs:element name="Expediente" type="t_expediente" />
+            <xs:element name="Num_accion" type="t_short" />
+            <xs:element name="Num_grupo" type="t_short" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="t_bloqueII">
+        <xs:sequence>
+            <xs:element name="II_1" type="t_edad" minOccurs="0" />
+            <xs:element name="II_2" type="t_genero" minOccurs="0" />
+            <xs:element name="II_3" type="t_seleccion14" />
+            <xs:element name="II_31" type="t_otrastitulaciones" />
+            <xs:element name="II_4" type="t_seleccion3" />
+            <xs:element name="II_5" type="t_residencia_trabajo" minOccurs="0" />
+            <xs:element name="II_6" type="t_existencia" />
+            <xs:element name="II_7" type="t_categoria" minOccurs="0" />
+            <xs:element name="II_8" type="t_seleccion3" minOccurs="0" />
+            <xs:element name="II_8_1" type="t_seleccion3" minOccurs="0" />
+            <xs:element name="II_9" type="t_seleccion5_unica" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="t_bloqueIII">
+        <xs:sequence>
+            <xs:element name="III_1_1" type="t_seleccion4" />
+            <xs:element name="III_1_2" type="t_seleccion4" />
+            <xs:element name="III_2_1" type="t_seleccion4" />
+            <xs:element name="III_2_2" type="t_seleccion4" />
+            <xs:element name="III_3_1" type="t_seleccion4" />
+            <xs:element name="III_3_2" type="t_seleccion4" />
+            <xs:element name="III_4_1" type="t_4_1" />
+            <xs:element name="III_4_2" type="t_4_2" />
+            <xs:element name="III_5_1" type="t_seleccion4" />
+            <xs:element name="III_5_2" type="t_seleccion4" />
+            <xs:element name="III_6_1" type="t_seleccion4" minOccurs="0" />
+            <xs:element name="III_6_2" type="t_seleccion4" minOccurs="0" />
+            <xs:element name="III_7_1" type="t_seleccion4" minOccurs="0" />
+            <xs:element name="III_7_2" type="t_seleccion4" minOccurs="0" />
+            <xs:element name="III_8_1" type="t_sino" />
+            <xs:element name="III_8_2" type="t_sino" />
+            <xs:element name="III_9_1" type="t_seleccion4" />
+            <xs:element name="III_9_2" type="t_seleccion4" />
+            <xs:element name="III_9_3" type="t_seleccion4" />
+            <xs:element name="III_9_4" type="t_seleccion4" />
+            <xs:element name="III_9_5" type="t_seleccion4" />
+            <xs:element name="III_10" type="t_seleccion4" />
+            <xs:element name="III_10_1" type="t_sino" />
+            <xs:element name="III_11" type="t_texto" minOccurs="0" />
+            <xs:element name="III_12_1" type="t_seleccion4" minOccurs="0" />
+            <xs:element name="III_12_2" type="t_sino" minOccurs="0" />
+            <xs:element name="III_12_3" type="t_seleccion4" minOccurs="0" />
+            <xs:element name="III_12_4" type="t_seleccion4" minOccurs="0" />
+            <xs:element name="III_12_5" type="t_texto" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="t_residencia_trabajo" mixed="true">
+        <xs:choice>
+            <xs:element name="ocupado" type="t_provincia" />
+            <xs:element name="desempleado" type="t_provincia" />
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="t_categoria">
+        <xs:sequence>
+            <xs:element name="categoria" type="t_seleccion6_unica" />
+            <xs:element name="otra_categoria" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="2" />
+                        <xs:maxLength value="1000" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="t_existencia">
+        <xs:sequence>
+            <xs:element name="existencia" type="t_seleccion6_unica" />
+            <xs:element name="otra_existencia" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="2" />
+                        <xs:maxLength value="1000" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="t_4_1">
+        <xs:choice maxOccurs="2">
+            <xs:element name="III_4_1_Formador" type="t_seleccion4" />
+            <xs:element name="III_4_1_Tutor" type="t_seleccion4" />
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="t_4_2">
+        <xs:choice maxOccurs="2">
+            <xs:element name="III_4_2_Formador" type="t_seleccion4" />
+            <xs:element name="III_4_2_Tutor" type="t_seleccion4" />
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="t_otrastitulaciones">
+        <xs:sequence>
+            <xs:element name="II_31_1" type="t_sino" />
+            <xs:element name="otratitulacion" type="t_seleccionIdiomas" />
+            <xs:element name="especificar_otra_titulacion" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="2" />
+                        <xs:maxLength value="1000" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="t_cuestionario">
+        <xs:sequence>
+            <xs:element name="BloqueI" type="t_bloqueI" />
+            <xs:element name="BloqueII" type="t_bloqueII" />
+            <xs:element name="BloqueIII" type="t_bloqueIII" />
+            <xs:element name="fecha_cumplimentacion" type="t_fecha" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
