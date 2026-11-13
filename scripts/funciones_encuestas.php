@@ -82,7 +82,8 @@ function leer_csv_encuesta(string $ruta_csv): array
     rewind($fp);
 
     $filas = [];
-    while (($data = fgetcsv($fp, 10000, $delimitador)) !== false) {
+    // $escape explicito: PHP 8.4 avisa (deprecacion) si se omite y se usa el valor por defecto.
+    while (($data = fgetcsv($fp, 10000, $delimitador, '"', '')) !== false) {
         $filas[] = array_map('fix_encoding', $data);
     }
     fclose($fp);
